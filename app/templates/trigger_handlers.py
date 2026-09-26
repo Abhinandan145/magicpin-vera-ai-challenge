@@ -21,8 +21,8 @@ def compose_trigger_message(
     kind = trigger.get("kind", "").lower()
     payload = trigger.get("payload", {})
     scope = trigger.get("scope", "merchant")
-    urgency = trigger.get("urgency", 2)
-    suppression_key = trigger.get("suppression_key") or f"{kind}:{merchant.get('merchant_id', 'm')}:{trigger.get('id', 't')}"
+    suppression_key = trigger.get("suppression_key") or f"{kind}:{(merchant or {}).get('merchant_id', 'm')}:{trigger.get('id', 't')}"
+
     
     category_slug = category.get("slug", "") if category else (merchant.get("category_slug", "") if merchant else "")
     merchant_id = merchant.get("merchant_id", "") if merchant else trigger.get("merchant_id", "")
