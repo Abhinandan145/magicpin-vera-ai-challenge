@@ -1,7 +1,8 @@
 # magicpin AI Challenge — Vera Merchant Engagement Engine
 
-**Participant**: Abhinandan Aggarwal  
+**Participant**: Abhinandan Agarwal (Team: `Abhi14`)  
 **Role / Persona**: Senior AI Engineer & Competition Strategist  
+
 
 **Submission Version**: `1.0.0`  
 **Evaluation Standard**: 5-Dimension Grounded Rubric (Specificity, Category Fit, Merchant Fit, Trigger Relevance, Engagement Compulsion)
@@ -132,7 +133,7 @@ python3 judge_simulator.py
 |---|---|---|
 | `HOST` | `0.0.0.0` | Bind host |
 | `PORT` | `8080` | Bind port |
-| `TEAM_NAME` | `Abhinandan Aggarwal` | Team identity |
+| `TEAM_NAME` | `Abhi14` | Team identity |
 | `VERSION` | `1.0.0` | Bot semantic version |
 | `LLM_PROVIDER` | `""` | Optional LLM provider (`openai`, `anthropic`, `gemini`, `deepseek`, `groq`, `ollama`) |
 | `LLM_API_KEY` | `""` | Optional API key (engine operates 100% deterministically when blank) |

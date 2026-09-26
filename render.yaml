@@ -8,11 +8,12 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.8
       - key: TEAM_NAME
-        value: Abhinandan Aggarwal
+        value: Abhi14
       - key: TEAM_MEMBERS
-        value: Abhinandan Aggarwal
+        value: Abhinandan Agarwal
       - key: CONTACT_EMAIL
-        value: abhinandan.aggarwal@example.com
+        value: abhinandan.agrawal.ug23@nsut.ac.in
+
 
       - key: VERSION
         value: 1.0.0

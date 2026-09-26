@@ -48,6 +48,28 @@ def startup_event():
     context_store.load_from_dir()
 
 
+@app.get("/", tags=["System"])
+def root():
+    """Root endpoint welcoming judge/evaluators and linking to health and documentation."""
+    return {
+        "service": "magicpin Vera Autonomous Merchant Engagement Engine",
+        "team_name": settings.TEAM_NAME,
+        "team_members": settings.TEAM_MEMBERS,
+        "version": settings.VERSION,
+        "status": "online",
+        "endpoints": {
+            "healthz": "/v1/healthz",
+            "metadata": "/v1/metadata",
+            "context": "/v1/context",
+            "tick": "/v1/tick",
+            "reply": "/v1/reply",
+            "docs": "/docs",
+            "redoc": "/redoc"
+        }
+    }
+
+
+
 
 @app.get("/v1/healthz", response_model=HealthzResponse, tags=["System"])
 def health_check():
