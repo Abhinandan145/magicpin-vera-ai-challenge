@@ -50,12 +50,12 @@ def is_auto_reply(message: str, history: List[Dict[str, Any]]) -> Tuple[bool, st
     merchant_past_msgs = [
         h.get("message", "").strip().lower() 
         for h in history 
-        if h.get("from") == "merchant"
+        if h.get("from") == "merchant" and h.get("message")
     ]
     
-    if merchant_past_msgs:
-        repeat_count = sum(1 for m in merchant_past_msgs if m == msg_lower)
-        if repeat_count >= 1:
-            return True, f"Identical merchant message sent {repeat_count + 1} times in conversation"
+    if merchant_past_msgs and len(msg_clean) >= 20:
+        if merchant_past_msgs[-1] == msg_lower:
+            return True, "Identical consecutive canned message sent by merchant"
             
     return False, ""
+

@@ -28,18 +28,10 @@ class TriggerEngine:
             if not trigger:
                 continue
 
-            expires_at_str = trigger.get("expires_at")
-            if expires_at_str and now_dt:
-                try:
-                    exp_dt = datetime.fromisoformat(expires_at_str.replace("Z", "+00:00"))
-                    if now_dt > exp_dt:
-                        continue
-                except Exception:
-                    pass
-
             supp_key = trigger.get("suppression_key")
             if supp_key and context_store.is_suppressed(supp_key):
                 continue
+
 
             category, merchant, resolved_trigger, customer = context_store.resolve_contexts(trigger)
             if not merchant:

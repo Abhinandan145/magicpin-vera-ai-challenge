@@ -53,21 +53,26 @@ def classify_intent(message: str, history: List[Dict[str, Any]]) -> Tuple[ReplyI
     msg_clean = message.strip()
     msg_lower = msg_clean.lower()
     
-    is_auto, auto_reason = is_auto_reply(msg_clean, history)
-    if is_auto:
-        return ReplyIntent.AUTO_REPLY, auto_reason
-        
+    # 1. Check explicit hostile / opt-out first
     for pat in HOSTILE_PATTERNS:
         if re.search(pat, msg_lower):
             return ReplyIntent.HOSTILE_OPTOUT, f"Matched hostile/opt-out pattern: {pat}"
             
-    for pat in OFF_TOPIC_PATTERNS:
-        if re.search(pat, msg_lower):
-            return ReplyIntent.OFF_TOPIC, f"Matched off-topic pattern: {pat}"
-            
+    # 2. Check explicit execution commitment next
     for pat in EXECUTION_PATTERNS:
         if re.search(pat, msg_lower):
             return ReplyIntent.EXECUTION_COMMITMENT, f"Matched execution intent: {pat}"
+
+    # 3. Check auto-reply patterns
+    is_auto, auto_reason = is_auto_reply(msg_clean, history)
+    if is_auto:
+        return ReplyIntent.AUTO_REPLY, auto_reason
+        
+    # 4. Check off-topic
+    for pat in OFF_TOPIC_PATTERNS:
+        if re.search(pat, msg_lower):
+            return ReplyIntent.OFF_TOPIC, f"Matched off-topic pattern: {pat}"
+
             
     if re.match(r"^\s*(1|2|3|wed|wednesday|thu|thursday|fri|friday|sat|saturday|sun|sunday|\d{1,2}\s*(am|pm))\b", msg_lower):
         return ReplyIntent.SLOT_SELECTION, "Customer selected slot/option"
