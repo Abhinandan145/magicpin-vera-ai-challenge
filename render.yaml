@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: magicpin-vera-engagement
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
+      - key: TEAM_NAME
+        value: Rajeev Karakoti
+      - key: TEAM_MEMBERS
+        value: Rajeev Karakoti
+      - key: CONTACT_EMAIL
+        value: rajeev.karakoti@example.com
+      - key: VERSION
+        value: 1.0.0
+      - key: LLM_PROVIDER
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
