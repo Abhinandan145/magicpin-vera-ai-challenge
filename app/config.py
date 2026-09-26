@@ -9,10 +9,11 @@ APP_START_TIME = time.time()
 DEFAULT_SUBMITTED_AT = "2026-04-26T08:00:00Z"
 
 class Settings:
-    TEAM_NAME: str = os.getenv("TEAM_NAME", "Rajeev Karakoti")
-    TEAM_MEMBERS: list = [m.strip() for m in os.getenv("TEAM_MEMBERS", "Rajeev Karakoti").split(",")]
-    CONTACT_EMAIL: str = os.getenv("CONTACT_EMAIL", "rajeev.karakoti@example.com")
+    TEAM_NAME: str = os.getenv("TEAM_NAME", "Abhinandan Aggarwal")
+    TEAM_MEMBERS: list = [m.strip() for m in os.getenv("TEAM_MEMBERS", "Abhinandan Aggarwal").split(",")]
+    CONTACT_EMAIL: str = os.getenv("CONTACT_EMAIL", "abhinandan.aggarwal@example.com")
     VERSION: str = os.getenv("VERSION", "1.0.0")
+
     SUBMITTED_AT: str = os.getenv("SUBMITTED_AT", DEFAULT_SUBMITTED_AT)
     
     # LLM Settings

@@ -8,11 +8,12 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.8
       - key: TEAM_NAME
-        value: Rajeev Karakoti
+        value: Abhinandan Aggarwal
       - key: TEAM_MEMBERS
-        value: Rajeev Karakoti
+        value: Abhinandan Aggarwal
       - key: CONTACT_EMAIL
-        value: rajeev.karakoti@example.com
+        value: abhinandan.aggarwal@example.com
+
       - key: VERSION
         value: 1.0.0
       - key: LLM_PROVIDER
